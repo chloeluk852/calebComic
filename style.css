@@ -1,0 +1,467 @@
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Inria Serif";
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  background-color: #edf5e1; /* Light background for readability */
+  color: #05386b; /* Dark text color for contrast */
+  line-height: 1.6; /* Improved readability */
+}
+
+#openingText {
+  margin: 2em;
+  margin-bottom: 10%;
+  transform: translateY(20px); /* Slightly move down */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Transition for fade-in */
+  font-size: 1.3em; /* Increase size for emphasis */
+}
+
+nav {
+  z-index: 1000;
+  padding: 15px 30px; /* Padding for a more substantial look */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.coverimg {
+  width: 90%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0; /* Start hidden for fade-in effect */
+  transform: translateY(20px); /* Slightly move down */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Transition for fade-in */
+  border-radius: 8px; /* Rounded corners for images */
+  overflow: hidden; /* Hide overflow */
+}
+
+.content {
+  margin-top: 100px;
+}
+
+/* Card styles */
+.card {
+  margin-bottom: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff; /*  card background */
+  color: #05386b; /* Dark text color for cards */
+  padding: 20px; /* Padding inside cards */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: transform 0.3s ease; /* Smooth scale effect */
+}
+.card-img-top {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0; /* Rounded corners for the top */
+}
+.card-title {
+  padding-top: 17px;
+  font-size: 1.5em; /* Slightly larger font */
+}
+
+.container {
+  margin-top: 80px; /* Adjust to prevent overlap with fixed navbar */
+  max-width: 100%;
+}
+
+/* Centering img-wrapper */
+.vid-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 600px;
+  margin: 2em;
+  background-color: #ffffff; /* White background for contrast */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Padding for inner space */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+iframe {
+  width: 100%; /* Full width */
+  height: 36vw; /* Maintain aspect ratio */
+  max-height: 500px; /* Ensures it doesn't exceed the container's height */
+  border: none; /* Removes default border */
+  border-radius: 8px; /* Rounded corners */
+}
+
+.img-fluid {
+  max-width: 100%; /* Responsive image */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+strong {
+  font-weight: bold;
+  color: #5cdb95; /* Accent color */
+}
+
+#comicsh1 {
+  text-align: center;
+  color: #fff; /* Header color */
+  animation: fadeIn 1s ease; /* Fade-in effect for header */
+  font-size: 5em; /* Large font size for emphasis */
+  margin: 20px 0; /* Margin for spacing */
+}
+
+.comic-img {
+  width: 100%;
+  height: auto;
+}
+
+.verticalCenter {
+  padding: 70px;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover effects */
+.card:hover {
+  transform: scale(1.03); /* Slightly scale up on hover */
+  border-color: #5cdb95;
+  border-width: 3px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.text-container {
+  margin: 2em; /* Adjust the margin as needed */
+  padding: 20px; /* Padding for inner content */
+  background-color: #ffffff; /* White background for text container */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.typing-animation {
+  font-family: "Inria Serif"; /* Ensure the same font is used */
+  overflow: hidden; /* Hide the text until it is revealed */
+  display: inline; /* Allow the text to wrap */
+  margin-right: 0; /* Remove right margin to avoid spacing issues */
+  color: #05386b; /* Dark text color for typing animation */
+}
+
+/* Cursor styling */
+.typing-animation::after {
+  content: ""; /* Create a cursor */
+  display: inline-block; /* Allow it to align with text */
+  width: 2px; /* Cursor width */
+  height: 1em; /* Match cursor height to text height */
+  background-color: #05386b; /* Cursor color */
+  animation: blink-caret 0.75s step-end infinite; /* Cursor blinking animation */
+  margin-left: 2px; /* Space between text and cursor */
+}
+
+/* Blinking cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    background-color: transparent; /* Invisible cursor */
+  }
+  50% {
+    background-color: #05386b; /* Visible cursor */
+  }
+}
+
+.concept {
+  position: relative;
+  padding: 0em;
+  height: 80px;
+  overflow: hidden;
+  scroll-snap-align: center;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    opacity: 0;
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  &:hover:before {
+    opacity: 0.5;
+  }
+}
+
+.concept-six {
+  display: flex;
+  align-items: center;
+  .word {
+    width: 550px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    &:hover {
+      .char:nth-child(1) {
+        margin-top: -30px;
+        transform: rotate(-20deg);
+      }
+      .char:nth-child(2) {
+        margin: -40px 0px 0 10px;
+        transform: rotate(5deg);
+      }
+      .char:nth-child(3) {
+        margin: 15px 0 0 10px;
+        transform: rotate(12deg);
+      }
+      .char:nth-child(4) {
+        margin: -25px 0 0;
+        transform: rotate(5deg);
+      }
+      .char:nth-child(5) {
+        margin: -40px 5px 0;
+        transform: rotate(-10deg);
+      }
+      .char:nth-child(6) {
+        margin-top: -30px;
+        transform: rotate(-20deg);
+      }
+      .char:nth-child(7) {
+        margin: -40px 0px 0 10px;
+        transform: rotate(5deg);
+      }
+      .char:nth-child(8) {
+        margin: 15px 0 0 10px;
+        transform: rotate(12deg);
+      }
+      .char:nth-child(9) {
+        margin: -25px 0 0;
+        transform: rotate(5deg);
+      }
+    }
+  }
+  .char {
+    flex: 1;
+    transition: 0.3s ease-in-out;
+    position: relative;
+  }
+}
+
+.concept-seven {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    letter-spacing: 15px;
+    position: relative;
+    &:before {
+      content: "C O M I C S";
+      position: absolute;
+      margin: auto;
+      left: 0;
+      right: 0;
+      max-width: 400px;
+      color: transparent;
+      letter-spacing: 10px;
+      text-shadow: none;
+    }
+  }
+  &:hover h1:before {
+    transition: 0.6s ease;
+    color: #5cdb95;
+    animation: jump-out 0.6s ease forwards;
+  }
+}
+
+@keyframes jump-out {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+/* Behind the scenes timeline */
+
+.timeline {
+  --color: rgba(30, 30, 30);
+  --bgColor: rgba(245, 245, 245);
+  min-height: 30vh;
+  display: grid;
+  align-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  color: var(--color);
+  background: var(--bgColor);
+}
+
+.timeline h2 {
+  text-align: center;
+}
+
+.timeline ul {
+  --col-gap: 2rem;
+  --row-gap: 2rem;
+  --line-w: 0.25rem;
+  display: grid;
+  grid-template-columns: var(--line-w) 1fr;
+  grid-auto-columns: max-content;
+  column-gap: var(--col-gap);
+  list-style: none;
+  width: min(60rem, 90%);
+  margin-inline: auto;
+}
+
+/* line */
+.timeline ul::before {
+  content: "";
+  grid-column: 1;
+  grid-row: 1 / span 20;
+  background: rgb(225, 225, 225);
+  border-radius: calc(var(--line-w) / 2);
+}
+
+/* card */
+.timeline ul li {
+  grid-column: 2;
+  --inlineP: 1.5rem;
+  margin-inline: var(--inlineP);
+  grid-row: span 2;
+  display: grid;
+  grid-template-rows: min-content min-content min-content;
+}
+
+/* date */
+.timeline ul li .date {
+  --dateH: 3rem;
+  height: var(--dateH);
+  margin-inline: calc(var(--inlineP) * -1);
+  text-align: center;
+  background-color: var(--accent-color);
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 700;
+  display: grid;
+  place-content: center;
+  position: relative;
+  border-radius: calc(var(--dateH) / 2) 0 0 calc(var(--dateH) / 2);
+}
+
+/* date flap */
+.timeline ul li .date::before {
+  content: "";
+  width: var(--inlineP);
+  aspect-ratio: 1;
+  background: var(--accent-color);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2) 100%, transparent);
+  position: absolute;
+  top: 100%;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  right: 0;
+}
+
+/* circle */
+.timeline ul li .date::after {
+  content: "";
+  position: absolute;
+  width: 2rem;
+  aspect-ratio: 1;
+  background: var(--bgColor);
+  border: 0.3rem solid var(--accent-color);
+  border-radius: 50%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  right: calc(100% + var(--col-gap) + var(--line-w) / 2);
+}
+
+/* title descr */
+.timeline ul li .title,
+.timeline ul li .descr {
+  background: var(--bgColor);
+  position: relative;
+  padding-inline: 1.5rem;
+}
+.timeline ul li .title {
+  overflow: hidden;
+  padding-block-start: 1.5rem;
+  padding-block-end: 1rem;
+  font-weight: 500;
+}
+.timeline ul li .descr {
+  padding-block-end: 1.5rem;
+  font-weight: 300;
+}
+
+/* shadows */
+.timeline ul li .title::before,
+.timeline ul li .descr::before {
+  content: "";
+  position: absolute;
+  width: 90%;
+  height: 0.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  left: 50%;
+  border-radius: 50%;
+  filter: blur(4px);
+  transform: translate(-50%, 50%);
+}
+.timeline ul li .title::before {
+  bottom: calc(100% + 0.125rem);
+}
+.timeline ul li .descr::before {
+  z-index: -1;
+  bottom: 0.25rem;
+}
+
+@media (min-width: 40rem) {
+  .timeline ul {
+    grid-template-columns: 1fr var(--line-w) 1fr;
+  }
+  .timeline ul::before {
+    grid-column: 2;
+  }
+  .timeline ul li:nth-child(odd) {
+    grid-column: 1;
+  }
+  .timeline ul li:nth-child(even) {
+    grid-column: 3;
+  }
+
+  /* start second card */
+  .timeline ul li:nth-child(2) {
+    grid-row: 2/4;
+  }
+
+  .timeline ul li:nth-child(odd) .date::before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    left: 0;
+  }
+
+  .timeline ul li:nth-child(odd) .date::after {
+    transform: translate(-50%, -50%);
+    left: calc(100% + var(--col-gap) + var(--line-w) / 2);
+  }
+  .timeline ul li:nth-child(odd) .date {
+    border-radius: 0 calc(var(--dateH) / 2) calc(var(--dateH) / 2) 0;
+  }
+}
