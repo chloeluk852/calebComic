@@ -24,7 +24,7 @@ class OpeningPosition {
     ctx.font = "40px Inria Serif";
     ctx.fillStyle = "#EDF5E1";
     ctx.fillText(
-      "Hi Noob, let's win over evil Larry!",
+      "Hi Noob, let's defeat Namu!",
       play.width / 2,
       play.height / 2
     );
