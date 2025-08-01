@@ -3,18 +3,30 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
 // Canvas automatic resizing
+// In main.js
+
 function resize() {
-  // Configure height based on screen size
-  const height = window.innerHeight - 60; //comic: change from 20 to 60 to adjust
+  // Original aspect ratio of the game canvas
+  const gameRatio = canvas.width / canvas.height;
+  const windowRatio = window.innerWidth / window.innerHeight;
 
-  // Calculate canvas's width by ratio
-  const ratio = canvas.width / canvas.height;
-  const width = height * ratio;
+  let newWidth, newHeight;
 
-  canvas.style.width = width + "px";
-  canvas.style.height = height + "px";
+  // Check if the window is skinnier than the game (portrait mode)
+  if (windowRatio < gameRatio) {
+    // Fit to window width
+    newWidth = window.innerWidth;
+    newHeight = newWidth / gameRatio;
+  } else {
+    // Or if the window is wider than the game (landscape mode)
+    // Fit to window height
+    newHeight = window.innerHeight;
+    newWidth = newHeight * gameRatio;
+  }
+
+  canvas.style.width = newWidth + 'px';
+  canvas.style.height = newHeight + 'px';
 }
-
 window.addEventListener("load", resize);
 window.addEventListener('resize', resize); // Add this line
 
