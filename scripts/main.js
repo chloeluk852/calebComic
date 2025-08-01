@@ -16,6 +16,7 @@ function resize() {
 }
 
 window.addEventListener("load", resize);
+window.addEventListener('resize', resize); // Add this line
 
 // Game Basics
 class GameBasics {
