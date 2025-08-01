@@ -154,3 +154,74 @@ window.addEventListener("keyup", function (e) {
   const keyboardCode = e.code; // Get the event code
   play.keyUp(keyboardCode);
 });
+
+// for phone friendly:
+// Touch control elements
+const leftButton = document.createElement('div');
+const rightButton = document.createElement('div');
+const fireButton = document.createElement('div');
+
+// Style and position the buttons
+leftButton.style.cssText = 'position: absolute; bottom: 30px; left: 30px; width: 80px; height: 80px; background-color: rgba(215, 223, 1, 0.5); border-radius: 50%;';
+rightButton.style.cssText = 'position: absolute; bottom: 30px; left: 130px; width: 80px; height: 80px; background-color: rgba(215, 223,1, 0.5); border-radius: 50%;';
+fireButton.style.cssText = 'position: absolute; bottom: 30px; right: 30px; width: 80px; height: 80px; background-color: rgba(215, 223, 1, 0.5); border-radius: 50%;';
+
+// Add a visible label to the buttons
+leftButton.innerHTML = '<span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; color: white;">&larr;</span>';
+rightButton.innerHTML = '<span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; color: white;">&rarr;</span>';
+fireButton.innerHTML = '<span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; color: white;">FIRE</span>';
+
+
+document.body.appendChild(leftButton);
+document.body.appendChild(rightButton);
+document.body.appendChild(fireButton);
+
+
+// Touch event handlers
+function handleTouchStart(e) {
+    e.preventDefault();
+    const touchX = e.touches[0].clientX;
+    const touchY = e.touches[0].clientY;
+
+    // Check if touch is within the bounds of the left button
+    const leftButtonRect = leftButton.getBoundingClientRect();
+    if (touchX >= leftButtonRect.left && touchX <= leftButtonRect.right &&
+        touchY >= leftButtonRect.top && touchY <= leftButtonRect.bottom) {
+        play.keyDown('ArrowLeft');
+    }
+
+    // Check if touch is within the bounds of the right button
+    const rightButtonRect = rightButton.getBoundingClientRect();
+    if (touchX >= rightButtonRect.left && touchX <= rightButtonRect.right &&
+        touchY >= rightButtonRect.top && touchY <= rightButtonRect.bottom) {
+        play.keyDown('ArrowRight');
+    }
+
+    // Check if touch is within the bounds of the fire button
+    const fireButtonRect = fireButton.getBoundingClientRect();
+    if (touchX >= fireButtonRect.left && touchX <= fireButtonRect.right &&
+        touchY >= fireButtonRect.top && touchY <= fireButtonRect.bottom) {
+        play.keyDown('Space');
+    }
+}
+
+function handleTouchEnd(e) {
+    e.preventDefault();
+    play.keyUp('ArrowLeft');
+    play.keyUp('ArrowRight');
+    play.keyUp('Space');
+}
+
+// Add touch event listeners to the canvas
+canvas.addEventListener("touchstart", handleTouchStart, { passive: false });
+canvas.addEventListener("touchend", handleTouchEnd, { passive: false });
+
+// Add touch event listeners to the buttons as well
+leftButton.addEventListener("touchstart", (e) => { e.preventDefault(); play.keyDown('ArrowLeft'); }, { passive: false });
+leftButton.addEventListener("touchend", (e) => { e.preventDefault(); play.keyUp('ArrowLeft'); }, { passive: false });
+
+rightButton.addEventListener("touchstart", (e) => { e.preventDefault(); play.keyDown('ArrowRight'); }, { passive: false });
+rightButton.addEventListener("touchend", (e) => { e.preventDefault(); play.keyUp('ArrowRight'); }, { passive: false });
+
+fireButton.addEventListener("touchstart", (e) => { e.preventDefault(); play.keyDown('Space'); }, { passive: false });
+fireButton.addEventListener("touchend", (e) => { e.preventDefault(); play.keyUp('Space'); }, { passive: false });
